@@ -764,13 +764,16 @@ body {
 
 
 @media screen and (max-width: 658px) {
+    /* ===== WRAPPER ===== */
     #wrapper {
         min-height: 100vh;
         min-height: 100dvh;
-        height: 100%;
+        height: auto;
         overflow-x: hidden;
+        overflow-y: auto;
     }
 
+    /* ===== FLAGS ===== */
     .flag__birthday {
         width: 100%;
         overflow: hidden;
@@ -789,18 +792,38 @@ body {
         transform: rotate(10deg) translate(15px, 10px) scaleX(-1);
     }
 
+    /* ===== CONTENT: STACK VERTICALLY ===== */
     .content {
         width: 100%;
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        gap: 16px;
         align-items: center;
-        padding-top: calc(10px + env(safe-area-inset-top, 0px));
-        padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
+        justify-content: flex-start;
+        gap: 20px;
+        padding-top: 8px;
+        padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
     }
 
+    .content .left {
+        width: 100%;
+        max-width: 380px;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content .right {
+        width: 100%;
+        max-width: 380px;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ===== TITLE ===== */
     .title {
         position: relative;
         width: 100%;
@@ -808,107 +831,87 @@ body {
         justify-content: center;
         align-items: center;
         font-family: "Titan One", sans-serif;
-        font-size: 2.5rem;
-        letter-spacing: 5px;
+        font-size: 3rem;
+        letter-spacing: 2px;
         flex-direction: column;
         perspective: 1000px;
+        line-height: 1.1;
+        padding-top: 10px;
     }
 
-    .title .happy, .title .birthday {
+    .title .happy,
+    .title .birthday {
         display: flex;
         justify-content: center;
+        font-size: inherit;
     }
 
-    .cricle {
-        position: absolute;
-        top: 10px;
-        right: -30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: scale(0);
-        animation: scaleCricle 3s 15s forwards ease-in-out;
-    }
-
+    /* ===== HAT ===== */
     .title .hat {
         position: absolute;
-        right: 16%;
-        top: -38px !important;
-        transform: rotate(-35deg);
+        right: 5px;
+        top: -30px !important;
         z-index: 2;
+        transform: rotate(-35deg);
         animation: topHat 4s 7s forwards ease;
     }
 
     .title .hat img {
-        width: 80px;
+        width: 60px;
     }
 
+    /* ===== DATE PILL ===== */
     .date__of__birth {
-        font-size: 1.1rem;
-        padding: 4px 12px;
-        margin-top: 4px;
+        font-size: 1rem;
+        padding: 4px 10px;
+        margin-top: 8px;
+        max-width: calc(100vw - 32px);
     }
 
-    .box__letter .letter__border {
-        position: absolute;
-        width: 90vw;
-        height: 315px;
-        background-color: var(--color-white);
-        border-radius: 27px;
-        padding: 17px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: none;
+    @keyframes dateOfBirth {
+        20%, 40% {
+            width: 0px;
+            height: 0;
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+        }
+        45% {
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+            width: min(260px, 75vw);
+            height: 0px;
+        }
+        50%, 100% {
+            transform: translateY(0px);
+            opacity: 1;
+            visibility: visible;
+            width: min(260px, 75vw);
+            height: 50px;
+        }
     }
 
-    .letter__border .letter {
+    /* ===== BUTTONS ===== */
+    .left .btn {
         width: 100%;
-        height: 100%;
-        background-color: var(--color-bg-letter);
-        border-radius: 10px;
-        padding-top: 15px;
-    }
-
-    .letter__border .letter .title__letter {
-        text-align: center;
-        font-family: 'Dancing Script', cursive;
-        font-weight: bold;
-        font-size: 1.4rem;
-    }
-
-    .letter__border .letter .content__letter {
-        position: relative;
-        width: 100%;
-        height: 100%;
         display: flex;
-        padding-top: .7rem;
-        padding-bottom: 70px;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 
-    .content__letter .right .text__letter {
-        margin-top: -14px;
-        padding: 20px 15px 10px 15px;
-        font-family: 'Dancing Script', cursive;
-        font-size: .8rem;
+    #btn__letter,
+    #FromRexon {
+        margin-top: 6px;
+        width: min(240px, 75vw);
     }
 
-    .content__letter .right .love__img {
-        opacity: 0;
-        position: absolute;
-        right: 126px;
-        top: 167px;
-    }
-
-    .love__img img {
-        width: 84px;
-    }
-
+    /* ===== PHOTO CIRCLE ===== */
     .content .right .image {
         position: relative;
-        width: 175px;
-        height: 175px;
+        width: 170px;
+        height: 170px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
@@ -924,87 +927,166 @@ body {
         object-fit: cover;
     }
 
+    /* ===== NAME BADGE ===== */
     .name {
         position: absolute;
-        padding: 2px 10px;
-        bottom: -8px;
+        padding: 2px 12px;
+        bottom: -10px;
         border: 3px solid var(--color-black);
         background: #fff;
         border-radius: 12px;
+        white-space: nowrap;
     }
 
     .name span {
         font-size: 0.95rem;
         font-weight: bold;
+        margin: 0 8px;
     }
 
+    /* ===== BOX ACCOUNT ANIMATION ===== */
+    .right .box__account {
+        transform: translateY(400px);
+    }
+
+    /* ===== ROTATING TEXT CIRCLE ===== */
+    .cricle {
+        position: absolute;
+        top: -5px;
+        right: 5px;
+        transform: scale(0);
+        animation: scaleCricle 3s 15s forwards ease-in-out;
+    }
+
+    /* ===== BALLOONS ===== */
     .right .balloon_one {
         position: absolute;
         top: 5px;
-        left: -40px;
-        animation: balloon1 2s infinite linear;
+        left: -35px;
     }
 
     .right .balloon_one img {
-        width: 55px !important;
+        width: 50px !important;
     }
 
     .right .balloon_two {
         position: absolute;
-        top: 35px;
-        right: -40px;
-        animation: balloon2 2s infinite linear;
+        top: 30px;
+        right: -35px;
     }
 
     .right .balloon_two img {
-        width: 55px !important;
+        width: 50px !important;
     }
 
+    /* ===== DECORATIONS (keep within screen bounds) ===== */
     .decorate_flower--one {
-        top: 70px;
-        left: 20px;
+        top: 65px;
+        left: 6px;
     }
 
     .decorate_flower--two {
-        bottom: 80px;
-        left: 15px;
+        top: auto;
+        bottom: 100px;
+        left: 8px;
     }
 
     .decorate_flower--three {
-        top: 260px;
-        right: 15px;
+        top: auto;
+        bottom: 220px;
+        right: 8px;
+        left: auto;
     }
 
     .decorate_star.star1 {
         top: 35px;
-        left: 80%;
+        left: auto;
+        right: 30px;
     }
 
     .decorate_star.star2 {
         top: 10px;
-        right: 20px;
+        right: 8px;
+        left: auto;
     }
 
     .decorate_star.star3 {
-        top: 240px;
-        left: 20px;
+        top: auto;
+        bottom: 160px;
+        left: 8px;
     }
 
     .decorate_star.star4 {
-        bottom: 40px;
-        left: 25px;
+        bottom: 60px;
+        left: 8px;
+    }
+
+    .decorate_star.star5 {
+        bottom: 160px;
+        left: auto;
+        right: 8px;
     }
 
     .smiley__icon {
-        bottom: 240px;
-        left: 10px;
-        width: 42px;
+        bottom: 60px;
+        left: auto;
+        right: 8px;
+        width: 40px;
     }
 
-    #btn__letter, #FromRexon {
-        margin-top: 6px;
-        width: 220px;
-        max-width: 85vw;
+    .decorate_bottom {
+        right: 0;
+        bottom: -5px;
+    }
+
+    .decorate_bottom img {
+        width: 65px;
+    }
+
+    /* ===== LETTER MODAL ===== */
+    .box__letter .letter__border {
+        width: 90vw;
+        height: 315px;
+        border-radius: 27px;
+        padding: 17px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+
+    .letter__border .letter {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        padding-top: 15px;
+    }
+
+    .letter__border .letter .title__letter {
+        font-size: 1.4rem;
+    }
+
+    .letter__border .letter .content__letter {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding-top: .7rem;
+        padding-bottom: 70px;
+    }
+
+    .content__letter .right .text__letter {
+        margin-top: -14px;
+        padding: 20px 15px 10px 15px;
+        font-size: .8rem;
+    }
+
+    .content__letter .right .love__img {
+        right: 126px;
+        top: 167px;
+    }
+
+    .love__img img {
+        width: 84px;
     }
 }
 
