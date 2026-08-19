@@ -128,14 +128,14 @@ main::after::before {
 
 .heart-loader__group {
     transform-origin: 0 90px;
-    animation: group-anim 7s 0.1s forwards;
+    animation: group-anim 3.8s 0.1s forwards;
 }
 
 .heart-loader__square {
     stroke: #FAEBD7;
     stroke-dasharray: 240, 240;
     stroke-dashoffset: 240;
-    animation: square-anim 7s 0.1s forwards;
+    animation: square-anim 3.8s 0.1s forwards;
 }
 
 .heart-loader__circle {
@@ -146,19 +146,19 @@ main::after::before {
 }
 
 .heart-loader__circle.m--left {
-    animation: left-circle-anim 7s 0.1s forwards;
+    animation: left-circle-anim 3.8s 0.1s forwards;
 }
 
 .heart-loader__circle.m--right {
-    animation: right-circle-anim 7s 0.1s forwards;
+    animation: right-circle-anim 3.8s 0.1s forwards;
 }
 
 .heart-loader__heartPath {
-    stroke: #af0202;
+    stroke: #ff1744;
     fill: transparent;
     stroke-dasharray: 308.522, 308.522;
     stroke-dashoffset: 308.522;
-    animation: heart-anim 7s 0.1s forwards;
+    animation: heart-anim 3.8s 0.1s forwards;
 }
 
 /* --- Keyframes --- */
