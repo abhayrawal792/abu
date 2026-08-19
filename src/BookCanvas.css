@@ -466,42 +466,50 @@
 @media screen and (max-width: 658px) {
     .boxMail .boxMail-container {
         position: absolute;
-        width: 650px;
-        height: 500px;
+        width: 580px;
+        height: 420px;
         display: flex;
         margin: 0;
-        transform: scale(0.9);
+        transform: scale(min(0.58, calc((100vw - 20px) / 580)));
         -webkit-perspective: 2000px;
         perspective: 2000px;
     }
 
-    .boxMail .boxMail-container:hover {
-        transform: rotate(-5deg);
+    .boxMail .boxMail-container:hover,
+    .boxMail .boxMail-container:active {
+        transform: scale(min(0.58, calc((100vw - 20px) / 580))) rotate(-3deg);
         filter: drop-shadow(0 0 10px #FF7882);
     }
 
-    .boxMail .boxMail-container:hover .card1 {
-        transform: translate(-160px, -250px) rotateY(-140deg);
+    .boxMail .boxMail-container:hover .card1,
+    .boxMail .boxMail-container:active .card1 {
+        transform: translate(-145px, -210px) rotateY(-140deg);
     }
 
     .boxMail .boxMail-container .card2 h3 {
         font-family: 'Dancing Script', cursive;
-        font-size: 28px;
-        margin-bottom: 15px;
+        font-size: 26px;
+        margin-bottom: 12px;
     }
 
     .boxMail .boxMail-container .card2 .card2-message-text {
         font-family: "Sriracha", "cursive";
-        padding: 10px 0;
-        font-size: 16px;
-        line-height: 1.6;
+        padding: 8px 0;
+        font-size: 15px;
+        line-height: 1.55;
         flex-grow: 1;
         overflow-y: auto;
         text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     }
 
     .boxMail .boxMail-container .card2 .signature {
-        font-size: 20px;
+        font-size: 19px;
     }
 
+    .boxMail .crossAll {
+        top: calc(10px + env(safe-area-inset-top, 0px));
+        right: calc(10px + env(safe-area-inset-right, 0px));
+        font-size: 26px;
+        padding: 8px 16px;
+    }
 }

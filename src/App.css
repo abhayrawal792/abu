@@ -764,13 +764,29 @@ body {
 
 
 @media screen and (max-width: 658px) {
+    #wrapper {
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    .flag__birthday {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .flag__birthday img {
+        max-width: 55vw;
+        height: auto;
+    }
 
     .flag__birthday .flag__left {
-        transform: rotate(-10deg) translate(-119px, 3px);
+        transform: rotate(-10deg) translate(-15px, 10px);
     }
 
     .flag__birthday .flag__right {
-        transform: rotate(10deg) translate(-106px, 39px) scaleX(-1);
+        transform: rotate(10deg) translate(15px, 10px) scaleX(-1);
     }
 
     .content {
@@ -778,10 +794,11 @@ body {
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 25px;
+        justify-content: flex-start;
+        gap: 16px;
         align-items: center;
-        padding-top: 2rem;
+        padding-top: calc(10px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
     }
 
     .title {
@@ -789,17 +806,23 @@ body {
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
         font-family: "Titan One", sans-serif;
-        font-size: 3rem;
-        letter-spacing: 8px;
+        font-size: 2.5rem;
+        letter-spacing: 5px;
         flex-direction: column;
         perspective: 1000px;
+    }
+
+    .title .happy, .title .birthday {
+        display: flex;
+        justify-content: center;
     }
 
     .cricle {
         position: absolute;
         top: 10px;
-        right: -54px;
+        right: -30px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -809,11 +832,21 @@ body {
 
     .title .hat {
         position: absolute;
-        right: -98px;
-        top: -51px !important;
-        transform: rotate(-40deg);
-        z-index: -1;
+        right: 16%;
+        top: -38px !important;
+        transform: rotate(-35deg);
+        z-index: 2;
         animation: topHat 4s 7s forwards ease;
+    }
+
+    .title .hat img {
+        width: 80px;
+    }
+
+    .date__of__birth {
+        font-size: 1.1rem;
+        padding: 4px 12px;
+        margin-top: 4px;
     }
 
     .box__letter .letter__border {
@@ -869,62 +902,82 @@ body {
     }
 
     .love__img img {
-
         width: 84px;
-
     }
 
     .content .right .image {
         position: relative;
-        width: 200px;
-        height: 200px;
+        width: 175px;
+        height: 175px;
         border-radius: 50%;
         overflow: hidden;
         display: flex;
         align-items: center;
-        border: 6px solid var(--color-black);
+        justify-content: center;
+        border: 5px solid var(--color-black);
+        box-shadow: 0 0 20px rgba(233, 30, 140, 0.35);
+    }
+
+    .content .right .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .name {
         position: absolute;
-        padding: 0px 3px;
-        bottom: -6px;
+        padding: 2px 10px;
+        bottom: -8px;
         border: 3px solid var(--color-black);
+        background: #fff;
+        border-radius: 12px;
     }
 
     .name span {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        font-weight: bold;
     }
 
     .right .balloon_one {
         position: absolute;
-        top: 10px;
-        left: -77px;
+        top: 5px;
+        left: -40px;
         animation: balloon1 2s infinite linear;
     }
 
     .right .balloon_one img {
-        width: 76px !important;
+        width: 55px !important;
+    }
+
+    .right .balloon_two {
+        position: absolute;
+        top: 35px;
+        right: -40px;
+        animation: balloon2 2s infinite linear;
+    }
+
+    .right .balloon_two img {
+        width: 55px !important;
     }
 
     .decorate_flower--one {
-        top: 100px;
-        left: 50px;
-    }
-
-    .decorate_flower--two {
-        top: 585px;
+        top: 70px;
         left: 20px;
     }
 
+    .decorate_flower--two {
+        bottom: 80px;
+        left: 15px;
+    }
+
     .decorate_flower--three {
-        top: 320px;
-        right: 25px;
+        top: 260px;
+        right: 15px;
     }
 
     .decorate_star.star1 {
-        top: 45px;
-        left: 200px;
+        top: 35px;
+        left: 80%;
     }
 
     .decorate_star.star2 {
@@ -933,40 +986,25 @@ body {
     }
 
     .decorate_star.star3 {
-        top: 300px;
-        left: 30px;
+        top: 240px;
+        left: 20px;
     }
 
     .decorate_star.star4 {
-        bottom: 60px;
-        left: 35px;
-    }
-
-    .decorate_star.star5 {
-        bottom: 140px;
-        left: 500px;
+        bottom: 40px;
+        left: 25px;
     }
 
     .smiley__icon {
-        bottom: 330px;
+        bottom: 240px;
         left: 10px;
-        width: 50px;
+        width: 42px;
     }
 
-    .right .balloon_two {
-        position: absolute;
-        top: 60px;
-        right: -65px;
-    }
-
-    #btn__letter {
-        margin-top: 15px;
-        width: 200px;
-    }
-
-    #FromRexon {
-        margin-top: 10px;
-        width: 200px;
+    #btn__letter, #FromRexon {
+        margin-top: 6px;
+        width: 220px;
+        max-width: 85vw;
     }
 }
 
