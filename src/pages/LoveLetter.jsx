@@ -21,24 +21,26 @@ const LoveLetter = () => {
         if (startEvent.target.tagName === "BUTTON") return;
 
         const letterEl = e.currentTarget;
-
         const rect = letterEl.getBoundingClientRect();
 
         const offsetX = startEvent.clientX - rect.left;
         const offsetY = startEvent.clientY - rect.top;
 
-        const startLeft = rect.left + window.scrollX;
-        const startTop = rect.top + window.scrollY;
+        const startLeft = rect.left;
+        const startTop = rect.top;
 
+        letterEl.style.animation = "none";
         letterEl.style.transform = "none";
-        letterEl.classList.remove("-translate-x-1/2");
-        letterEl.classList.remove("-translate-y-1/2");
-
-        letterEl.style.position = "absolute";
+        letterEl.style.position = "fixed";
         letterEl.style.left = `${startLeft}px`;
         letterEl.style.top = `${startTop}px`;
-        letterEl.style.margin = 0;
-        letterEl.style.zIndex = zIndexCounter;
+        letterEl.style.margin = "0";
+
+        setZIndexCounter((prev) => {
+            const nextZ = prev + 1;
+            letterEl.style.zIndex = nextZ;
+            return nextZ;
+        });
 
         const moveAt = (posX, posY) => {
             letterEl.style.left = `${posX - offsetX}px`;
@@ -61,7 +63,7 @@ const LoveLetter = () => {
         };
 
         if (isTouch) {
-            document.addEventListener("touchmove", onMouseMove);
+            document.addEventListener("touchmove", onMouseMove, { passive: false });
             document.addEventListener("touchend", onMouseUp);
         } else {
             document.addEventListener("mousemove", onMouseMove);
@@ -96,7 +98,7 @@ const LoveLetter = () => {
                         <span className="munna heart-text">Open</span>
                     </button>
                     <div className="munna envelope-flap text-black relative">
-                        <div className='munna absolute left-1/2 top-[20%] -translate-x-1/2 flex items-center justify-center flex-col md:gap-y-2'>
+                        <div className='munna flap-title-content absolute left-1/2 top-[20%] -translate-x-1/2 flex items-center justify-center flex-col md:gap-y-2'>
                             <span className='munna font-sriracha md:text-2xl text-lg'>Envelope Of Love</span>
                             <span className='munna font-dancingScript md:text-3xl text-xl'>Dear {name} ({giver}'s Bhuntu)</span>
                         </div>
@@ -108,21 +110,18 @@ const LoveLetter = () => {
                     </div>
                 </div>
 
-                <div className="munna letters" ref={lettersContainerRef}>
-                    {letters.map((letter) => (
+                <div className={`munna letters ${openEnvelope ? "open" : ""}`} ref={lettersContainerRef}>
+                    {letters.map((letter, index) => (
                         <blockquote
                             key={letter.id}
-                            className="munna letter center -translate-x-1/2 -translate-y-1/2"
+                            className="munna letter center"
                             id={letter.id}
                             tabIndex={0}
                             style={{
-                                position: 'absolute',
-                                top: window.innerWidth < 768 ? '53%' : '50%',
-                                left: window.innerWidth < 768 ? '50%' : '50%',
-                                transform: 'none',
+                                zIndex: letters.length - index + 20,
+                                animationDelay: `${index * 0.12 + 0.3}s`,
                             }}
-
-                            onMouseDown={(e) => handleMouseDown(e, letter.id)}
+                            onMouseDown={handleMouseDown}
                             onTouchStart={handleMouseDown}
                         >
                             <button
