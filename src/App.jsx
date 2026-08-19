@@ -28,9 +28,9 @@ const App = () => {
 
   useEffect(() => {
     // Start animation timers immediately on mount
-    const timer1 = setTimeout(() => setAnimateOut(true), 5600);
-    const timer2 = setTimeout(() => setShowContent(true), 5800);
-    const timer3 = setTimeout(() => setLoading(false), 6200);
+    const timer1 = setTimeout(() => setAnimateOut(true), 8000);
+    const timer2 = setTimeout(() => setShowContent(true), 8200);
+    const timer3 = setTimeout(() => setLoading(false), 8600);
 
     return () => {
       clearTimeout(timer1);

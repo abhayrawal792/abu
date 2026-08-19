@@ -10,16 +10,13 @@ const HeartTransition = ({ children }) => {
     useEffect(() => {
         if (isInitialMount.current) {
             isInitialMount.current = false; 
-            const minTime = new Promise(res => setTimeout(res, 100));
-            Promise.all([minTime]).then(() => setLoading(false));
-
             return;
         }
 
         setLoading(true);
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 1200);
+        }, 5500);
 
         return () => clearTimeout(timer);
     }, [location.pathname]);
