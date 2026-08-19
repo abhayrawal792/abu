@@ -15,7 +15,7 @@ import { calculateAge } from "../config/birthdayData";
 const Home = () => {
     // ------------------- Hooks 
     const [Active, SetActive] = useState(true)
-    const { name, dateText } = calculateAge();
+    const { name, dateText, giver } = calculateAge();
 
     useEffect(() => {
         let datetxt = dateText;
