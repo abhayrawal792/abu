@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router'
 import heartImg from '../assets/heart.png'
 import { calculateAge, loveLettersList } from '../config/birthdayData'
 
@@ -75,7 +76,15 @@ const LoveLetter = () => {
 
 
     return (
-        <main className='munna h-screen w-full overflow-hidden' style={{background: 'linear-gradient(160deg, #880e4f 0%, #c2185b 40%, #e91e8c 100%)'}}>
+        <main className='munna h-screen w-full overflow-hidden relative' style={{background: 'linear-gradient(160deg, #880e4f 0%, #c2185b 40%, #e91e8c 100%)'}}>
+            {/* --- Back to Home Button --- */}
+            <div className="absolute top-4 left-4 z-50">
+                <Link to="/" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 text-[#880e4f] font-bold text-sm shadow-md hover:bg-white transition-all backdrop-blur-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    Back to Birthday
+                </Link>
+            </div>
+
             <section className="munna cssletter z-10">
                 <div className={`envelope ${openEnvelope ? "active" : ""}`}>
                     <button

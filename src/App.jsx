@@ -27,10 +27,10 @@ const App = () => {
   const [animateOut, setAnimateOut] = useState(false); // New state for animation
 
   useEffect(() => {
-    // Start animation timers immediately on mount to prevent waiting for external asset network loads
-    const timer1 = setTimeout(() => setAnimateOut(true), 9400);
-    const timer2 = setTimeout(() => setShowContent(true), 9600);
-    const timer3 = setTimeout(() => setLoading(false), 10000);
+    // Start animation timers immediately on mount
+    const timer1 = setTimeout(() => setAnimateOut(true), 5600);
+    const timer2 = setTimeout(() => setShowContent(true), 5800);
+    const timer3 = setTimeout(() => setLoading(false), 6200);
 
     return () => {
       clearTimeout(timer1);

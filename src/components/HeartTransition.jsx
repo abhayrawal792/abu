@@ -17,10 +17,11 @@ const HeartTransition = ({ children }) => {
         }
 
         setLoading(true);
-        const minTime = new Promise(res => setTimeout(res, 7000));
-        const loadDone = new Promise(res => window.requestIdleCallback(res, { timeout: 2000 }));
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1200);
 
-        Promise.all([minTime, loadDone]).then(() => setLoading(false));
+        return () => clearTimeout(timer);
     }, [location.pathname]);
 
 

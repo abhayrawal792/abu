@@ -273,7 +273,7 @@
     height: 35px;
     transform: translateY(-300px);
     backface-visibility: hidden;
-    animation: in 500ms 6s ease-out forwards;
+    animation: in 400ms 3.6s ease-out forwards;
     z-index: 5;
 }
 
@@ -309,23 +309,23 @@
 }
 
 .fuego:nth-child(1) {
-    animation: fuego 2s 6.5s infinite;
+    animation: fuego 2s 3.9s infinite;
 }
 
 .fuego:nth-child(2) {
-    animation: fuego 1.5s 6.5s infinite;
+    animation: fuego 1.5s 3.9s infinite;
 }
 
 .fuego:nth-child(3) {
-    animation: fuego 1s 6.5s infinite;
+    animation: fuego 1s 3.9s infinite;
 }
 
 .fuego:nth-child(4) {
-    animation: fuego 0.5s 6.5s infinite;
+    animation: fuego 0.5s 3.9s infinite;
 }
 
 .fuego:nth-child(5) {
-    animation: fuego 0.2s 6.5s infinite;
+    animation: fuego 0.2s 3.9s infinite;
 }
 
 @keyframes fuego {
@@ -359,7 +359,7 @@
     text-align: center;
     font-family: 'Dancing Script', cursive;
     z-index: 10;
-    animation: textAppear 1.2s cubic-bezier(0.23, 1, 0.32, 1) 6.8s forwards;
+    animation: textAppear 0.8s cubic-bezier(0.23, 1, 0.32, 1) 4.2s forwards;
 }
 
 /* --- Cake Text Title (Happy Birthday!) --- */
