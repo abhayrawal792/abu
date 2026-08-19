@@ -1,7 +1,9 @@
 import React, { useState, useRef } from 'react';
 import '../SmallLetter.css';
+import { calculateAge } from '../config/birthdayData';
 
 const SmallLetter = () => {
+    const { name, giver, ageOrdinal } = calculateAge();
     // 1. State to control the letter's open/close status
     const [isOpen, setIsOpen] = useState(false);
 
@@ -78,7 +80,7 @@ const SmallLetter = () => {
         >
             x
         </div>
-        <p>Hey Trishaa,<br /><br />Just a little note to say — Happy Birthday! 🎂 Wishing you all the joy, laughter, and love in the world today and always. You deserve every bit of happiness that comes your way.<br /><br />With love, Mico 💕</p>
+        <p>Hey {name} (Bhuntu),<br /><br />Just a little note from Abu to say — Happy {ageOrdinal} Birthday! 🎂 Wishing you all the joy, laughter, and endless love in the world today and always. You deserve every bit of happiness, my Bebo.<br /><br />Forever With Love, {giver} (Abhay) 💕</p>
     </div>
 
     {/* --- NEW SVG DIARY PAGE DECORATION --- */}

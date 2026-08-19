@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react'
+import confetti from 'canvas-confetti'
 import '../Opening.css'
+import { calculateAge } from '../config/birthdayData'
 
 const OpeningAnimation = ({ animateOut }) => {
+  const { name, ageOrdinal } = calculateAge();
 
   const makeItRain = () => {
     let disabled = true;
@@ -108,8 +111,8 @@ const OpeningAnimation = ({ animateOut }) => {
 
 
           <div className="MUNNA cakeText">
-            <h1 className="MUNNA cakeText-title">Happy 18th Birthday!</h1>
-            <div className="MUNNA cakeText-name">Trishaa <div className="MUNNA cakeText-kitty-bow"></div></div>
+            <h1 className="MUNNA cakeText-title">Happy {ageOrdinal} Birthday!</h1>
+            <div className="MUNNA cakeText-name">{name} <div className="MUNNA cakeText-kitty-bow"></div></div>
           </div>
 
 

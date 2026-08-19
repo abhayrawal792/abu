@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react'
-import orihime from '../assets/orihime.jpg'
+import sanzu from '../assets/sanzu.jpg'
 import { GiCrossMark } from 'react-icons/gi'
+import { calculateAge } from '../config/birthdayData'
 
 const BookCanvas = ({ active, setActive }) => {
-
+    const { name, giver, ageOrdinal, dateSubtext } = calculateAge();
     const dropdownRef = useRef(null)
     const handleClickOutside = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -29,19 +30,19 @@ const BookCanvas = ({ active, setActive }) => {
                 <div className="card1">
                     <div className="cover-text-wrapper">
                         <h4 className="username">
-                            Dear Trishaa<span className="underline"></span>
+                            Dear {name} (Bhuntu)<span className="underline"></span>
                         </h4>
                         <h3 className="cover-title">
-                            Happy Birthday!
+                            Happy {ageOrdinal} Birthday!
                         </h3>
                         <p className="cover-subtitle">
-                            A purr-fect message just for you... 💌
+                            {dateSubtext} • From Abu with Endless Love 💌
                         </p>
                     </div>
 
-                    {/* User Image remains the same */}
+                    {/* Sanzu's Real Photo */}
                     <div className="userImg">
-                        <img src={orihime} alt="Recipient's Photo" />
+                        <img src={sanzu} alt="Sanzu's Photo" />
                     </div>
 
                     {/* New Hello Kitty themed decoration */}
@@ -51,11 +52,11 @@ const BookCanvas = ({ active, setActive }) => {
                     <div className="card1-decoration-sparkle"></div>
 
                     <svg className="deco-shape top-right-star" viewBox="0 0 100 100">
-                        <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="rgba(255, 255, 255, 0.6)" /> {/* Slightly more opaque */}
+                        <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="rgba(255, 255, 255, 0.6)" />
                     </svg>
 
                     <svg className="deco-shape bottom-left-ring" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" stroke="rgba(255, 255, 255, 0.7)" strokeWidth="5" fill="none" /> {/* Slightly more opaque */}
+                        <circle cx="50" cy="50" r="45" stroke="rgba(255, 255, 255, 0.7)" strokeWidth="5" fill="none" />
                         <circle cx="50" cy="50" r="20" fill="rgba(255, 255, 255, 0.3)" />
                     </svg>
                 </div>
@@ -63,19 +64,17 @@ const BookCanvas = ({ active, setActive }) => {
                 <div className="card2">
                     <div className="card2-content">
                         <h3 className="card2-recipient">
-                            To You!
+                            To My Priye Sanzu ❤️
                         </h3>
 
-                        {/* Swapping back to H2 to match the original CSS targeting */}
                         <div className="card2-message-text italic">
-                            <article style={{ marginBottom: '8px' }}>Happy Birthday, Trishaa ❤️</article>
-                            <article style={{ marginBottom: '10px' }}>From the moment we met, something in my life shifted—like the universe quietly guiding me toward someone meant for me.You brought warmth into the parts of me I didn’t even know were cold, And you expanded my days with a dimension I can only call my own.</article>
-                            <article style={{ marginBottom: '10px' }}>On your birthday, I just want you to know this: I want you with me in every chapter, every storm, every sunshine, every tomorrow. No matter what comes, I’ll be on your side—always. I’ll choose you, protect you, stand with you, and love you in ways that remind you you’re never alone.</article>
-                            <article style={{ marginBottom: '10px' }}>You’re not just another year older today… <br />
-                                you’re the reason my life feels softer, brighter, and endlessly worth living. Happy Birthday.</article>
+                            <article style={{ marginBottom: '8px', fontWeight: 600 }}>Happy {ageOrdinal} Birthday, Mero Bhuntu ❤️</article>
+                            <article style={{ marginBottom: '10px' }}>From the day you walked into our Nepalgunj home looking for a room, my whole world transformed. From Bageshwori Mandir darshan, Water Park walks, Chau-chau & Panipuri treats, to late-night video calls between Nepalgunj 🇳🇵 and Sakai, Osaka 🇯🇵 — every heartbeat belongs to you.</article>
+                            <article style={{ marginBottom: '10px' }}>I promise to choose you in every storm and sunshine. We will ride that light-blue scooter to Bardiya, explore Pokhara, Manang & Mustang, and build our beautiful forever home together.</article>
+                            <article style={{ marginBottom: '10px' }}>You’re not just another year older today... you’re my Bebo, my Sanu, my Fuchhee, and my whole life. I love you endlessly! 💕</article>
                         </div>
 
-                        <div className="card2-decoration"></div> {/* Decoration */}
+                        <div className="card2-decoration"></div>
 
                         <div className="corner-ribbon top-left">
                             <svg className='w-13 h-13 absolute -top-5 -rotate-50 -left-4' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
@@ -91,7 +90,7 @@ const BookCanvas = ({ active, setActive }) => {
                         <div className="confetti-dots"></div>
 
                         <p className="signature">
-                            Your Best Friend, Mico
+                            Forever Yours, {giver} (Abhay) ❤️
                         </p>
                     </div>
                 </div>
