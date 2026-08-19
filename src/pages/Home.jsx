@@ -28,11 +28,11 @@ const Home = () => {
             let timeDatetxt = setInterval(function () {
                 if (currentIndex < charArrDate.length) {
                     typedText += charArrDate[currentIndex];
-                    date__of__birth.textContent = typedText; // set fresh each time
+                    if (date__of__birth) date__of__birth.textContent = typedText;
                     currentIndex++;
                 } else {
                     clearInterval(timeDatetxt);
-                    if (!date__of__birth.classList.contains("svg-added")) {
+                    if (date__of__birth && !date__of__birth.classList.contains("svg-added")) {
                         let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
                         svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
                         svg.setAttribute("width", "24");
@@ -40,13 +40,15 @@ const Home = () => {
                         svg.setAttribute("viewBox", "0 0 24 24");
                         svg.innerHTML = `<path fill="#a31414" d="M18.483 16.767A8.5 8.5 0 0 1 8.118 7.081a1 1 0 0 1-.113.097c-.28.213-.63.292-1.33.45l-.635.144c-2.46.557-3.69.835-3.983 1.776c-.292.94.546 1.921 2.223 3.882l.434.507c.476.557.715.836.822 1.18c.107.345.071.717-.001 1.46l-.066.677c-.253 2.617-.38 3.925.386 4.506s1.918.052 4.22-1.009l.597-.274c.654-.302.981-.452 1.328-.452s.674.15 1.329.452l.595.274c2.303 1.06 3.455 1.59 4.22 1.01c.767-.582.64-1.89.387-4.507z"/> <path fill="#a31414" d="m9.153 5.408l-.328.588c-.36.646-.54.969-.82 1.182q.06-.045.113-.097a8.5 8.5 0 0 0 10.366 9.686l-.02-.19c-.071-.743-.107-1.115 0-1.46c.107-.344.345-.623.822-1.18l.434-.507c1.677-1.96 2.515-2.941 2.222-3.882c-.292-.941-1.522-1.22-3.982-1.776l-.636-.144c-.699-.158-1.049-.237-1.33-.45c-.28-.213-.46-.536-.82-1.182l-.327-.588C13.58 3.136 12.947 2 12 2s-1.58 1.136-2.847 3.408" opacity="0.5"/>`;
                         let container = document.querySelector(".date__of__birth");
-                        container.prepend(svg);
-                        container.appendChild(svg.cloneNode(true));
-                        date__of__birth.classList.add("svg-added");
+                        if (container) {
+                            container.prepend(svg);
+                            container.appendChild(svg.cloneNode(true));
+                            date__of__birth.classList.add("svg-added");
+                        }
                     }
                 }
-            }, 100);
-        }, 12000);
+            }, 80);
+        }, 1200);
     }, []);
 
 
@@ -62,21 +64,21 @@ const Home = () => {
                     <div className="left">
                         <div className="title">
                             <h1 className="happy">
-                                <span style={{ "--t": "4s" }}>H</span>
-                                <span style={{ "--t": "4.2s" }}>a</span>
-                                <span style={{ "--t": "4.4s" }}>p</span>
-                                <span style={{ "--t": "4.6s" }}>p</span>
-                                <span style={{ "--t": "4.8s" }}>y</span>
+                                <span style={{ "--t": "0.1s" }}>H</span>
+                                <span style={{ "--t": "0.2s" }}>a</span>
+                                <span style={{ "--t": "0.3s" }}>p</span>
+                                <span style={{ "--t": "0.4s" }}>p</span>
+                                <span style={{ "--t": "0.5s" }}>y</span>
                             </h1>
                             <h1 className="birthday">
-                                <span style={{ "--t": "5s" }}>B</span>
-                                <span style={{ "--t": "5.2s" }}>i</span>
-                                <span style={{ "--t": "5.4s" }}>r</span>
-                                <span style={{ "--t": "5.6s" }}>t</span>
-                                <span style={{ "--t": "5.8s" }}>h</span>
-                                <span style={{ "--t": "6s" }}>d</span>
-                                <span style={{ "--t": "6.2s" }}>a</span>
-                                <span style={{ "--t": "6.4s" }}>y</span>
+                                <span style={{ "--t": "0.6s" }}>B</span>
+                                <span style={{ "--t": "0.7s" }}>i</span>
+                                <span style={{ "--t": "0.8s" }}>r</span>
+                                <span style={{ "--t": "0.9s" }}>t</span>
+                                <span style={{ "--t": "1.0s" }}>h</span>
+                                <span style={{ "--t": "1.1s" }}>d</span>
+                                <span style={{ "--t": "1.2s" }}>a</span>
+                                <span style={{ "--t": "1.3s" }}>y</span>
                             </h1>
                             <div className="hat">
                                 <img src={hat} alt="" width="130" />
@@ -148,16 +150,16 @@ const Home = () => {
                 </div>
 
                 {[1, 2, 3, 4, 5].map((n, i) => (
-                    <div key={i} className={`decorate_star star${n}`} style={{ "--t": `${15 + i * 0.2}s` }}></div>
+                    <div key={i} className={`decorate_star star${n}`} style={{ "--t": `${1.0 + i * 0.1}s` }}></div>
                 ))}
 
-                <div className="decorate_flower--one" style={{ "--t": "15s" }}>
+                <div className="decorate_flower--one" style={{ "--t": "1.0s" }}>
                     <img width="20" src={decoFlowers} alt="" />
                 </div>
-                <div className="decorate_flower--two" style={{ "--t": "15.3s" }}>
+                <div className="decorate_flower--two" style={{ "--t": "1.1s" }}>
                     <img width="20" src={decoFlowers} alt="" />
                 </div>
-                <div className="decorate_flower--three" style={{ "--t": "15.6s" }}>
+                <div className="decorate_flower--three" style={{ "--t": "1.2s" }}>
                     <img width="20" src={decoFlowers} alt="" />
                 </div>
 
