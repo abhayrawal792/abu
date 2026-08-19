@@ -9,24 +9,27 @@ import LoveLetter from './pages/LoveLetter'
 import Test from './pages/Test'
 import OpeningAnimation from './components/OpeningAnimation'
 
+const MyRoute = createHashRouter(createRoutesFromElements(
+  <Route path='/' element={<Layout />}>
+    <Route index element={<Home />}></Route>
+    <Route path='love-letter' element={<LoveLetter />}></Route>
+    <Route path='love-Letter' element={<LoveLetter />}></Route>
+    <Route path='test' element={<Test />}></Route>
+  </Route>
+))
+
 const App = () => {
-
-  const MyRoute = createHashRouter(createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route index element={<Home />}></Route>
-      <Route path='love-letter' element={<LoveLetter />}></Route>
-      <Route path='love-Letter' element={<LoveLetter />}></Route>
-      <Route path='test' element={<Test />}></Route>
-    </Route>
-  ))
-
-
   // ------------------Cake loader 
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  const [animateOut, setAnimateOut] = useState(false); // New state for animation
+  const [animateOut, setAnimateOut] = useState(false);
 
   useEffect(() => {
+    // Reset to Home page on initial load so the middle page is never skipped on reload
+    if (window.location.hash && window.location.hash !== '#/' && window.location.hash !== '#') {
+      window.location.hash = '#/';
+    }
+
     // Start animation timers immediately on mount
     const timer1 = setTimeout(() => setAnimateOut(true), 8000);
     const timer2 = setTimeout(() => setShowContent(true), 8200);

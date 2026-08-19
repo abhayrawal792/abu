@@ -4,10 +4,9 @@ import HeartTransition from '../components/HeartTransition'
 
 const Layout = () => {
   return (
-    <>
-        <HeartTransition />
-        <Outlet />
-    </>
+    <HeartTransition>
+      <Outlet />
+    </HeartTransition>
   )
 }
 
