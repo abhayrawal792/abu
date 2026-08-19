@@ -771,6 +771,12 @@ body {
         height: auto;
         overflow-x: hidden;
         overflow-y: auto;
+        padding-bottom: 40px;
+    }
+
+    /* ===== HIDE SMALL LETTER ON MOBILE (too complex for small screens) ===== */
+    .smallLetter {
+        display: none !important;
     }
 
     /* ===== FLAGS ===== */

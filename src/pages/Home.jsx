@@ -178,7 +178,7 @@ const Home = () => {
                 <BookCanvas active={Active} setActive={SetActive} />
 
                 {/* ========================== Small letter from rajib ========================= */}
-                <section className="smallLetter md:absolute md:-bottom-26 md:left-[45%] md:-translate-x-1/2 relative flex justify-center mt-10" style={{ "--t": "15.6s" }}>
+                <section className="smallLetter absolute md:-bottom-26 -bottom-20 md:left-[45%] left-[50%] -translate-x-1/2" style={{ "--t": "15.6s" }}>
                     <SmallLetter />
                 </section>
             </div>
